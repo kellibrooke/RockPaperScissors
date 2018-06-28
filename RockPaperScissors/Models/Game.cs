@@ -25,5 +25,17 @@ namespace RockPaperScissors
                 return false;
             }
         }
+
+        public bool RockWins(string input1, string input2)
+        {
+            if((input1 == "rock" && input2 == "scissors") || (input1 == "scissors" && input2 == "rock"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
