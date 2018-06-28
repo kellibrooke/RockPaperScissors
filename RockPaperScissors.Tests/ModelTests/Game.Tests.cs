@@ -9,82 +9,133 @@ namespace RockPaperScissors.Tests
     public class GameTest
     {
         [TestMethod]
-        public void InputsMatch_DoTheInputsMatch_True()
+        public void InputsMatch_DoTheInputsMatch_StringDraw()
         {
             Game newGame = new Game();
             string input1 = "yes";
             string input2 = "yes";
-            bool doesMatch = newGame.InputsMatch(input1, input2);
-            Assert.AreEqual(true, doesMatch);
+            string doesMatch = newGame.InputsMatch(input1, input2);
+            Assert.AreEqual("draw", doesMatch);
         }
 
         [TestMethod]
-        public void InputsMatch_DoTheInputsMatch_False()
+        public void InputsMatch_DoTheInputsMatch_EmptyString()
         {
             Game newGame = new Game();
             string input1 = "yes";
             string input2 = "no";
-            bool doesMatch = newGame.InputsMatch(input1, input2);
-            Assert.AreEqual(false, doesMatch);
+            string drawOrNot = newGame.InputsMatch(input1, input2);
+            Assert.AreEqual(String.Empty, drawOrNot);
         }
 
         [TestMethod]
-        public void RockWins_DoesRockWin_True()
+        public void RockWins_DoesRockWin_StringRock()
         {
           Game newGame = new Game();
           string input1 = "rock";
           string input2 = "scissors";
-          bool doesRockWin = newGame.RockWins(input1, input2);
-          Assert.AreEqual(true, doesRockWin);
+          string whoWins = newGame.RockWins(input1, input2);
+          Assert.AreEqual("rock", whoWins);
         }
 
         [TestMethod]
-        public void RockWins_DoesRockWin_False()
+        public void RockWins_DoesRockWin_EmptyString()
         {
           Game newGame = new Game();
           string input1 = "scissors";
           string input2 = "scissors";
-          bool doesRockWin = newGame.RockWins(input1, input2);
-          Assert.AreEqual(false, doesRockWin);
+          string whoWins = newGame.RockWins(input1, input2);
+          Assert.AreEqual(String.Empty, whoWins);
         }
 
         [TestMethod]
-        public void ScissorsWins_DoesScissorsWin_True()
+        public void ScissorsWins_DoesScissorsWin_StringScissors()
         {
           Game newGame = new Game();
           string input1 = "scissors";
           string input2 = "paper";
-          bool doesScissorsWin = newGame.ScissorsWins(input1, input2);
-          Assert.AreEqual(true, doesScissorsWin);
+          string whoWins = newGame.ScissorsWins(input1, input2);
+          Assert.AreEqual("scissors", whoWins);
         }
 
         [TestMethod]
-        public void ScissorsWins_DoesScissorsWin_False()
+        public void ScissorsWins_DoesScissorsWin_EmptyString()
         {
           Game newGame = new Game();
           string input1 = "scissors";
           string input2 = "scissors";
-          bool doesScissorsWin = newGame.ScissorsWins(input1, input2);
-          Assert.AreEqual(false, doesScissorsWin);
+          string whoWins = newGame.ScissorsWins(input1, input2);
+          Assert.AreEqual(String.Empty, whoWins);
         }
 
         [TestMethod]
-        public void PaperWins_DoesPaperWin_True()
+        public void PaperWins_DoesPaperWin_StringPaper()
         {
           Game newGame = new Game();
           string input1 = "paper";
           string input2 = "rock";
-          bool doesPaperWin = newGame.PaperWins(input1, input2);
-          Assert.AreEqual(true, doesPaperWin);
+          string whoWins = newGame.PaperWins(input1, input2);
+          Assert.AreEqual("paper", whoWins);
         }
         [TestMethod]
-        public void PaperWins_DoesPaperWin_False()
+        public void PaperWins_DoesPaperWin_EmptyString()
         {
           Game newGame = new Game();
           string input1 = "paper";
           string input2 = "paper";
-          bool doesPaperWin = newGame.PaperWins(input1, input2);
-          Assert.AreEqual(false, doesPaperWin);
+          string whoWins = newGame.PaperWins(input1, input2);
+          Assert.AreEqual(String.Empty, whoWins);
         }
+
+        [TestMethod]
+        public void FindWinner_FindOutIfDraw_String()
+        {
+            Game newGame = new Game();
+            string input1 = "paper";
+            string input2 = "paper";
+            string whoIsWinner = newGame.FindWinner(input1, input2);
+            Assert.AreEqual("draw", whoIsWinner);
+        }
+
+        [TestMethod]
+        public void FindWinner_FindOutIfRockWins_String()
+        {
+          Game newGame = new Game();
+          string input1 = "rock";
+          string input2 = "scissors";
+          string whoIsWinner = newGame.FindWinner(input1, input2);
+          Assert.AreEqual("rock", whoIsWinner);
+        }
+
+        [TestMethod]
+        public void FindWinner_FindOutIfScissorsWins_String()
+        {
+          Game newGame = new Game();
+          string input1 = "scissors";
+          string input2 = "paper";
+          string whoIsWinner = newGame.FindWinner(input1, input2);
+          Assert.AreEqual("scissors", whoIsWinner);
+        }
+
+        [TestMethod]
+        public void FindWinner_FindOutIfPaperWins_String()
+        {
+          Game newGame = new Game();
+          string input1 = "paper";
+          string input2 = "rock";
+          string whoIsWinner = newGame.FindWinner(input1, input2);
+          Assert.AreEqual("paper", whoIsWinner);
+        }
+
+        [TestMethod]
+        public void FindWinner_FindOutIfYouTypedJibberish_String()
+        {
+          Game newGame = new Game();
+          string input1 = "dfaskj";
+          string input2 = "scissors";
+          string whoIsWinner = newGame.FindWinner(input1, input2);
+          Assert.AreEqual("Don't be like Elly", whoIsWinner);
+        }
+
     }
 }
