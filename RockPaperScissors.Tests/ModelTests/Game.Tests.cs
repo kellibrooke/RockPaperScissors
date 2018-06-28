@@ -47,5 +47,44 @@ namespace RockPaperScissors.Tests
           bool doesRockWin = newGame.RockWins(input1, input2);
           Assert.AreEqual(false, doesRockWin);
         }
+
+        [TestMethod]
+        public void ScissorsWins_DoesScissorsWin_True()
+        {
+          Game newGame = new Game();
+          string input1 = "scissors";
+          string input2 = "paper";
+          bool doesScissorsWin = newGame.ScissorsWins(input1, input2);
+          Assert.AreEqual(true, doesScissorsWin);
+        }
+
+        [TestMethod]
+        public void ScissorsWins_DoesScissorsWin_False()
+        {
+          Game newGame = new Game();
+          string input1 = "scissors";
+          string input2 = "scissors";
+          bool doesScissorsWin = newGame.ScissorsWins(input1, input2);
+          Assert.AreEqual(false, doesScissorsWin);
+        }
+
+        [TestMethod]
+        public void PaperWins_DoesPaperWin_True()
+        {
+          Game newGame = new Game();
+          string input1 = "paper";
+          string input2 = "rock";
+          bool doesPaperWin = newGame.PaperWins(input1, input2);
+          Assert.AreEqual(true, doesPaperWin);
+        }
+        [TestMethod]
+        public void PaperWins_DoesPaperWin_False()
+        {
+          Game newGame = new Game();
+          string input1 = "paper";
+          string input2 = "paper";
+          bool doesPaperWin = newGame.PaperWins(input1, input2);
+          Assert.AreEqual(false, doesPaperWin);
+        }
     }
 }
